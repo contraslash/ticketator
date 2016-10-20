@@ -55,7 +55,7 @@ def addcss(field, css):
 def filename_text(value):
     return os.path.basename(value.file.name)
 
-@register.inclusion_tag('templatetags/pagination-menu.html', takes_context=True)
+@register.inclusion_tag('core/templatetags/pagination-menu.html', takes_context=True)
 def paginate_menu(context, pagination, query):
     return {
         'pagination': pagination,

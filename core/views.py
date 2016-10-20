@@ -5,10 +5,12 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+
 @login_required
 def index(request):
-	return render(request, 'dashboard/index.html')
+    return render(request,'core/dashboard/index.html')
+
 
 @login_required
 def settings(request):
-	return render(request, 'settings/settings.html')
+    return render(request, 'core/settings/settings.html')
