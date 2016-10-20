@@ -1,68 +1,68 @@
 {% load staticfiles %}
 {% load core_settings_data %}
-        <div class="col-md-3 left_col ">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-                <div class="profile">
+<div class="col-md-3 left_col ">
+    <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+            <div class="profile">
                 <a href="/"><img src="{% static "media/logo/tk-tiny.png" %}" style="margin-left: 15px; margin-top: 8px;"></a>
-                </div>
             </div>
+        </div>
 
-            <div class="clearfix"></div>
-            <div class="clearfix"></div>
-           
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
+        <div class="clearfix"></div>
+        <div class="clearfix"></div>
+
+        <!-- sidebar menu -->
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
                 <ul class="nav side-menu">
 
-                <li>
-                    <a href="/"><i class="fa fa-home"></i> Dashoard <span class="fa"></span></a>
-                </li>
-                <li>
-                    <a href="/tickets/create-new-dev"><i class="fa fa-plus"></i>Add ticket</a>
-                </li>
-                <li>
-                    <a href="/tickets"><i class="fa fa-reorder"></i> Tickets <span class="fa"></span></a>
-                </li>
+                    <li>
+                        <a href="/"><i class="fa fa-home"></i> Dashoard <span class="fa"></span></a>
+                    </li>
+                    <li>
+                        <a href="/tickets/create-new-dev"><i class="fa fa-plus"></i>Add ticket</a>
+                    </li>
+                    <li>
+                        <a href="/tickets"><i class="fa fa-reorder"></i> Tickets <span class="fa"></span></a>
+                    </li>
 
-                <li>
-                    <a><i class="fa fa-flag-o fa-fw"></i>States<span class="fa arrow"></span></a>
-                            <ul class="nav child_menu">
-                                {% all_states as states %}
-                                    {% for i in states %}
-                                    <li>
-                                        <a href="/tickets/?assigned_state={{i.id}}">{{i}} tickets</a>
-                                    </li>
-                                    {%endfor%}
-                            </ul>
-                </li>
+                    <li>
+                        <a><i class="fa fa-flag-o fa-fw"></i>States<span class="fa arrow"></span></a>
+                        <ul class="nav child_menu">
+                            {% all_states as states %}
+                            {% for i in states %}
+                                <li>
+                                    <a href="/tickets/?assigned_state={{i.id}}">{{i}} tickets</a>
+                                </li>
+                            {%endfor%}
+                        </ul>
+                    </li>
 
-                <li>
-                    <a><i class="fa fa-barcode fa-fw"></i>Queues<span class="fa arrow"></span></a>
-                            <ul class="nav child_menu">
-                                {% all_queues_for_user perm_level='can_view' as queues %}
-                                    {% for j in queues %}
-                                    <li>
-                                        <a href="/tickets/?assigned_queue={{j.id}}">{{j.shortcode}}</a>
-                                    </li>
-                                    {%endfor%}
-                            </ul>
-                </li>
-                <li>
-                    <a href="/search"><i class="fa fa-search"></i>Search</a>
-                </li>
-                <li>
-                    <a href="/inventory"><i class="fa fa-desktop"></i>Inventory</a>
-                </li>
-                <li>
+                    <li>
+                        <a><i class="fa fa-barcode fa-fw"></i>Queues<span class="fa arrow"></span></a>
+                        <ul class="nav child_menu">
+                            {% all_queues_for_user perm_level='can_view' as queues %}
+                            {% for j in queues %}
+                                <li>
+                                    <a href="/tickets/?assigned_queue={{j.id}}">{{j.shortcode}}</a>
+                                </li>
+                            {%endfor%}
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/search"><i class="fa fa-search"></i>Search</a>
+                    </li>
+                    <li>
+                        <a href="/inventory"><i class="fa fa-desktop"></i>Inventory</a>
+                    </li>
+                    <li>
                         <a href="/settings"><i class="fa fa-gear fa-fw"></i>Settings</a>
-                </li>
+                    </li>
                 </ul>
-              </div>
             </div>
+        </div>
 
 
-                        <!-- /menu footer buttons -->
+        <!-- /menu footer buttons -->
     </div>
 </div>
