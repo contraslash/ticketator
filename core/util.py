@@ -5,12 +5,14 @@ import rights
 
 register = template.Library()
 
+
 @register.filter
 def abssub(value, arg):
     try:
         return abs(value - arg)
     except:
         return 'error'
+
 
 def paginate(queryset, page, limit=settings.PAGINATE_BY):
     start = (page - 1) * limit
@@ -45,4 +47,4 @@ def query_view(model, params, order_by='-id', granted_queues=None, limit=setting
         'pagination': pagination,
         'query': '&'.join(['%s=%s' % (key, value)
                            for key, value in params.iteritems()])
-}
+    }
