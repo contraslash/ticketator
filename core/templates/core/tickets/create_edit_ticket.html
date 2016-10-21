@@ -14,7 +14,7 @@
     <!--<script src="{% static "vendors/bootstrap-daterangepicker/daterangepicker.js" %}"></script>-->
     <script src="{% static "vendors/ion.rangeSlider/js/ion.rangeSlider.min.js" %}"></script>
     <!--tickets JS-->
-    <script type="text/javascript" src="{% static "js/tickets/tickets.js" %}"></script>
+    <script type="text/javascript" src="{% static "core/tickets/tickets.js" %}"></script>
 
 {% endblock%}
 
@@ -254,7 +254,7 @@
                                         <textarea id="id_ticket-body" name="ticket-body" rows="5" placeholder="Describe now your problem" class="form-control">{% if form_ticket.instance.body %}{{form_ticket.instance.body}}{%endif%}</textarea>
                                         {{form_ticket.body.errors}}
                                     </div>
-                                    <hr></hr>
+                                    <hr/>
 
                                     {% if actual_files %}
                                         <div class="col-md-12 col-sm-12 col-xs-12 form-group">
@@ -350,6 +350,7 @@
 
 
                         </div>
+
 
 
                         <div class="col-md-12 col-sm-12 col-xs-12 form-group">
