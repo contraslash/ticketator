@@ -193,12 +193,12 @@
                                         <li>
                                             <div class="block">
                                                 <div class="tags">
-                                                    <a class="tag" href="/static/media/{{i.file_name}}" download>
+                                                    <a class="tag" href="/media/{{i.file_name}}" download>
                                                         <span>{{i.file_name|filename_text}}</span>
                                                     </a>
                                                 </div>
                                                 <div class="block_content">
-                                                    <p class="excerpt"><a href="#" data-toggle="modal" data-target="#img{{i.id}}"><img width=50% height=50% src="/static/media/{{i.file_name}}"></a></p>
+                                                    <p class="excerpt"><a href="#" data-toggle="modal" data-target="#img{{i.id}}"><img width=50% height=50% src="/media/{{i.file_name}}"></a></p>
                                                 </div>
                                             </div>
                                             <!--modal part-->
@@ -206,7 +206,7 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-body">
-                                                            <img src="/static/media/{{i.file_name}}" class="img-responsive">
+                                                            <img src="/media/{{i.file_name}}" class="img-responsive">
                                                         </div>
                                                     </div>
                                                 </div>

@@ -10,7 +10,7 @@
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         {% if request.user.avatar%}
-                            <img src="/static/media/{{request.user.avatar}}" alt="...">
+                            <img src="/media/{{request.user.avatar}}" alt="...">
                         {%else%}
                             <img src="/static/images/user.png" alt="">
                         {%endif%}

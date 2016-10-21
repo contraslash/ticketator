@@ -267,12 +267,12 @@
                                                     <li>
                                                         <div class="block">
                                                             <div class="tags">
-                                                                <a class="tag" href="/static/media/{{i.file_name}}" download>
+                                                                <a class="tag" href="/media/{{i.file_name}}" download>
                                                                     <span>{{i.file_name|filename_text}}</span>
                                                                 </a>
                                                             </div>
                                                             <div class="block_content">
-                                                                <p class="excerpt"><a href="#" data-toggle="modal" data-target="#img{{i.id}}"><img width=50% height=50% src="/static/media/{{i.file_name}}"></a></p>
+                                                                <p class="excerpt"><a href="#" data-toggle="modal" data-target="#img{{i.id}}"><img width=50% height=50% src="/media/{{i.file_name}}"></a></p>
                                                             </div>
                                                         </div>
                                                         <!--modal part-->
@@ -280,7 +280,7 @@
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-body">
-                                                                        <img src="/static/media/{{i.file_name}}" class="img-responsive">
+                                                                        <img src="/media/{{i.file_name}}" class="img-responsive">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -328,7 +328,7 @@
                                                 {% for comm in actual_comments %}
                                                     <div id="comment" class="col-md-12 col-sm-12 col-xs-12 form-group">
 
-                                                        <img alt="Avatar" class="avatar" src="/static/media/{{comm.user_rel.avatar}}">
+                                                        <img alt="Avatar" class="avatar" src="/media/{{comm.user_rel.avatar}}">
                                                         <span class="pull-right" style="margin-top: 10px;">{{comm.date|date:'d-m-Y H:i'}}</span>
                                                         <h5>{{comm.user_rel.first_name}} {{comm.user_rel.last_name}}</h5>
                                                         <div class="well">
