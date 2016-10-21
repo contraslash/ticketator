@@ -1,0 +1,91 @@
+{% extends "core/dashboard/index.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-22">
+            <h1 class="page-header">Settings</h1>
+        </div>
+        <!-- /.col-lg-22 -->
+    </div>
+
+
+    <div class="row ">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="feature-box">
+                <a href="/settings/user">
+                    <span class="feature-icon"><i class="fa fa-user"></i></span>
+                    <h4>Users</h4>
+                    <span>Manage users</span>
+                </a>
+            </div>
+        </div>
+        {% if request.user.is_superuser == True %}
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="feature-box">
+                    <a href="/settings/groups">
+                        <span class="feature-icon"><i class="fa fa-mobile"></i></span>
+                        <h4>Groups</h4>
+                        <span>Manage groups</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="feature-box">
+                    <a href="/settings/queue">
+                        <span class="feature-icon"><i class="fa fa-th-list"></i></span>
+                        <h4>Queues </h4>
+                        <span>Manage queues for tickets</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="feature-box">
+                    <a href="/settings/companies">
+                        <span class="feature-icon"><i class="fa fa-list-alt"></i></span>
+                        <h4>Companys</h4>
+                        <span>Manage companys</span>
+                    </a>
+                </div>
+            </div>
+            </div>
+
+            <div class="row clearfix">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="feature-box">
+                    <a href="/settings/rights">
+                        <span class="feature-icon"><i class="fa fa-file-code-o"></i></span>
+                        <h4>Rights</h4>
+                        <span>Manage rights for queues</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="feature-box">
+                    <a href="/settings/state">
+                        <span class="feature-icon"><i class="fa fa-css3"></i></span>
+                        <h4>States</h4>
+                        <span>Manage states for tickets</span>
+                    </a>
+                </div>
+            </div>
+        {%endif%}
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="feature-box">
+                <a href="#">
+                    <span class="feature-icon"><i class="fa fa-flag"></i></span>
+                    <h4>Config</h4>
+                    <span>Ticketator settings</span>
+                </a>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+
+    </div>
+
+
+
+
+{%endblock%}

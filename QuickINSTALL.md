@@ -35,9 +35,13 @@ pip install -r requirements.txt
 -Now, to populate some needed data from the base directory of the instalation:
 
 ```sh
-./manage.py loaddata fixtures/1_states.json 
-./manage.py loaddata fixtures/2_usertypes.json 
-./manage.py loaddata fixtures/3_priority.json 
+./manage.py loaddata core/fixtures.initial_data.json
+```
+
+-This will create an user and a password:
+```
+username: ticketator_user
+password: ticketator_passowrd
 ```
 
 -Now, you can load the microwebserver that comes with Django from your normal user:

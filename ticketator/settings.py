@@ -23,8 +23,9 @@ SECRET_KEY = 'ol84z9()#he4r#bx-%bo52^d5a!l*^84j%8))4r=_5-szall@$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+PRODUCTION = False
 
-#ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -52,7 +53,7 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'ticketator.urls'
 
-ACTUAL_TEMPLATES = os.path.join(BASE_DIR, 'templates/')
+ACTUAL_TEMPLATES = os.path.join(BASE_DIR, 'templates')
 
 TEMPLATES = [
     {
@@ -103,6 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+
 ]
 
 
@@ -110,21 +112,23 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
 LANGUAGE_CODE = 'es-es'
-TIME_ZONE = 'Europe/Madrid'
+TIME_ZONE = 'America/Bogota'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = False
 
-MEDIA_ROOT = ""+os.path.join(BASE_DIR, "static/media")+""
+MEDIA_ROOT = os.path.join(BASE_DIR, "static/media")
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, "static/media/ticket_files")
+# STATIC_ROOT = os.path.join(BASE_DIR, "static/media/ticket_files")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-#    '/var/www/static/',
+    # '/var/www/static/',
 ]
 
 SITE_NAME = 'Ticketator DEV'
@@ -132,12 +136,15 @@ SITE_VERSION = '0.1'
 DATE_INPUT_FORMATS = ['%d/%m/%y']
 DATE_FORMAT = ['%d/%m/%y']
 
-#Pagination seq
+# Pagination seq
 PAGINATE_BY = 15
 
-#Auth settings
-LOGIN_REDIRECT_URL="/"
-LOGIN_URL="/login"
+# Auth settings
+LOGIN_REDIRECT_URL = "/"
+LOGIN_URL = "/login"
 
-#Auth custom settings
+# Auth custom settings
 AUTH_USER_MODEL = 'core.User'
+
+if PRODUCTION:
+    import prod_settings
