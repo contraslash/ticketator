@@ -14,7 +14,7 @@
     <!--<script src="{% static "vendors/bootstrap-daterangepicker/daterangepicker.js" %}"></script>-->
     <script src="{% static "vendors/ion.rangeSlider/js/ion.rangeSlider.min.js" %}"></script>
     <!--tickets JS-->
-    <script type="text/javascript" src="{% static "core/tickets/tickets.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/tickets/tickets.js" %}"></script>
 
 {% endblock%}
 
@@ -44,7 +44,7 @@
                         </li>
                     </ul>
                 </div>
-                {% include "core/tickets/delete_modal.html" %}
+                {% include "tickets/delete_modal.html" %}
 
             {% else %}
                 <button form="ticketform" class="btn btn-default btn-sm pull-right" style="margin-right: 5px" type="submit" name="save-signal" >Save</button>
@@ -254,7 +254,7 @@
                                         <textarea id="id_ticket-body" name="ticket-body" rows="5" placeholder="Describe now your problem" class="form-control">{% if form_ticket.instance.body %}{{form_ticket.instance.body}}{%endif%}</textarea>
                                         {{form_ticket.body.errors}}
                                     </div>
-                                    <hr/>
+                                    <hr></hr>
 
                                     {% if actual_files %}
                                         <div class="col-md-12 col-sm-12 col-xs-12 form-group">
@@ -267,12 +267,12 @@
                                                     <li>
                                                         <div class="block">
                                                             <div class="tags">
-                                                                <a class="tag" href="/media/{{i.file_name}}" download>
+                                                                <a class="tag" href="/static/media/{{i.file_name}}" download>
                                                                     <span>{{i.file_name|filename_text}}</span>
                                                                 </a>
                                                             </div>
                                                             <div class="block_content">
-                                                                <p class="excerpt"><a href="#" data-toggle="modal" data-target="#img{{i.id}}"><img width=50% height=50% src="/media/{{i.file_name}}"></a></p>
+                                                                <p class="excerpt"><a href="#" data-toggle="modal" data-target="#img{{i.id}}"><img width=50% height=50% src="/static/media/{{i.file_name}}"></a></p>
                                                             </div>
                                                         </div>
                                                         <!--modal part-->
@@ -280,7 +280,7 @@
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-body">
-                                                                        <img src="/media/{{i.file_name}}" class="img-responsive">
+                                                                        <img src="/static/media/{{i.file_name}}" class="img-responsive">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -328,7 +328,11 @@
                                                 {% for comm in actual_comments %}
                                                     <div id="comment" class="col-md-12 col-sm-12 col-xs-12 form-group">
 
-                                                        <img alt="Avatar" class="avatar" src="/media/{{comm.user_rel.avatar}}">
+                                                        {% if comm.user_rel.avatar %}
+                                                            <img alt="Avatar" class="avatar" src="/static/media/{{comm.user_rel.avatar}}">
+                                                        {% else %}
+                                                            <img class="img-circle profile_img" alt="..." src="/static/images/user.png">
+                                                        {%endif%}
                                                         <span class="pull-right" style="margin-top: 10px;">{{comm.date|date:'d-m-Y H:i'}}</span>
                                                         <h5>{{comm.user_rel.first_name}} {{comm.user_rel.last_name}}</h5>
                                                         <div class="well">
@@ -350,7 +354,6 @@
 
 
                         </div>
-
 
 
                         <div class="col-md-12 col-sm-12 col-xs-12 form-group">

@@ -70,29 +70,29 @@
                             <tbody id="tbodysearch">
                             {%for line in tickets_info.data %}
                                 <tr class="odd gradeX">
-                                    <td class="text-center" style="vertical-align:middle"><a href="/tickets/edit-dev/{{line.id}}">{{line.id}}</a></td>
-                                    <td class="text-center" style="vertical-align:middle"><a href="/tickets/edit-dev/{{line.id}}">{{line.subject}}</a></td>
-                                    <td class="text-center" style="vertical-align:middle"><span class="label" style="background-color:#{{line.assigned_state.color}}"><font color="black">{{line.assigned_state}}</font></span></td>
-                                    <td class="text-center" style="vertical-align:middle">{% if line.assigned_queue %}{{line.assigned_queue.shortcode}}{%else%}{%endif%}</td>
-                                    <td class="text-center" style="vertical-align:middle">{{line.create_user}}</td>
-                                    <td class="text-center" style="vertical-align:middle">{{line.date|date:"d/m/y G:i:s"}}</td>
-                                    <td class="text-center" style="vertical-align:middle">{% if line.assigned_user %}{{line.assigned_user.first_name}} {{line.assigned_user.last_name}}{%endif%}</td>
+                                <td class="text-center" style="vertical-align:middle"><a href="/tickets/edit-dev/{{line.id}}">{{line.id}}</a></td>
+                                <td class="text-center" style="vertical-align:middle"><a href="/tickets/edit-dev/{{line.id}}">{{line.subject}}</a></td>
+                                <td class="text-center" style="vertical-align:middle"><span class="label" style="background-color:#{{line.assigned_state.color}}"><font color="black">{{line.assigned_state}}</font></span></td>
+                                <td class="text-center" style="vertical-align:middle">{% if line.assigned_queue %}{{line.assigned_queue.shortcode}}{%else%}{%endif%}</td>
+                                <td class="text-center" style="vertical-align:middle">{{line.create_user}}</td>
+                                <td class="text-center" style="vertical-align:middle">{{line.date|date:"d/m/y G:i:s"}}</td>
+                                <td class="text-center" style="vertical-align:middle">{% if line.assigned_user %}{{line.assigned_user.first_name}} {{line.assigned_user.last_name}}{%endif%}</td>
 
 
-                                    <td class="project_progress">
-                                        <div class="progress progress_sm" >
-                                            <div aria-valuenow="{{line.percentage}}" style="width: {{line.percentage}}%" class="progress-bar
+                                <td class="project_progress">
+                                    <div class="progress progress_sm" >
+                                        <div aria-valuenow="{{line.percentage}}" style="width: {{line.percentage}}%" class="progress-bar
                                                                               {%if line.percentage <= 30 and line.percentage >= 0 %}  bg-red {%endif%}
                                                                               {%if line.percentage <= 60 and line.percentage >= 40 %} bg-orange {%endif%}
                                                                               {%if line.percentage <= 100 and line.percentage >= 70 %} bg-green {%endif%}"
-                                                 role="progressbar" data-transitiongoal="{{line.percentage}}">
-                                            </div>
+                                             role="progressbar" data-transitiongoal="{{line.percentage}}">
                                         </div>
-                                        <div class="percentage_range" >
-                                            <small>{{line.percentage}}%</small>
-                                        </div>
-                                    </td>
-                                </tr>
+                                    </div>
+                                    <div class="percentage_range" >
+                                        <small>{{line.percentage}}%</small>
+                                    </div>
+                                </td>
+                                </td>
                                 <td class="text-center" style="vertical-align:middle">{{line.assigned_prio}}</td>
                             {%endfor%}
                             </tbody>
@@ -112,7 +112,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Subject </label>
                         </div>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" id="subject" placeholder="Subject or body"  class="form-control">
+                            <input type="text" id="subject" placeholder="Subject data"  class="form-control">
                         </div>
                     </div>
 
@@ -121,7 +121,26 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Body </label>
                         </div>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" id="body" placeholder="Subject or body"  class="form-control">
+                            <input type="text" id="body" placeholder="Body data"  class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">State </label>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <select class="form-control pointer" id="id_status" name="ticket-status" >
+                                <!--<option disabled selected value> -- select an option -- </option>-->
+                                <option value="" selected >--</option>
+                                {% for status_tk in common_data.status_info %}
+                                    {%if status_tk.id  == form_ticket.instance.assigned_user.id %}
+                                        <option value="{{status_tk.id}}" selected >{{status_tk.name}}</option>
+                                    {%else%}
+                                        <option value="{{status_tk.id}}">{{status_tk.name}}</option>
+                                    {%endif%}
+                                {%endfor%}
+                            </select>
                         </div>
                     </div>
 
@@ -130,7 +149,17 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Creator </label>
                         </div>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" placeholder="Subject or body"  class="form-control">
+                            <select class="form-control pointer" id="id_create_user" name="ticket-create_user" >
+                                <!--<option disabled selected value> -- select an option -- </option>-->
+                                <option value="" selected >--</option>
+                                {% for user_resp in common_data.users_info %}
+                                    {%if user_resp.id  == form_ticket.instance.assigned_user.id %}
+                                        <option value="{{user_resp.id}}" selected >{{user_resp.first_name}} {{user_resp.last_name}}</option>
+                                    {%else%}
+                                        <option value="{{user_resp.id}}">{{user_resp.first_name}} {{user_resp.last_name}}</option>
+                                    {%endif%}
+                                {%endfor%}
+                            </select>
                         </div>
                     </div>
 
@@ -139,7 +168,17 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Responsible </label>
                         </div>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" placeholder="Subject or body"  class="form-control">
+                            <select class="form-control pointer" id="id_assigned_user" name="ticket-assigned_user" >
+                                <!--<option disabled selected value> -- select an option -- </option>-->
+                                <option value="" selected >--</option>
+                                {% for user_resp in common_data.users_info %}
+                                    {%if user_resp.id  == form_ticket.instance.assigned_user.id %}
+                                        <option value="{{user_resp.id}}" selected >{{user_resp.first_name}} {{user_resp.last_name}}</option>
+                                    {%else%}
+                                        <option value="{{user_resp.id}}">{{user_resp.first_name}} {{user_resp.last_name}}</option>
+                                    {%endif%}
+                                {%endfor%}
+                            </select>
                         </div>
                     </div>
 
